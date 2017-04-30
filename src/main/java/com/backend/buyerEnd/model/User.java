@@ -1,6 +1,6 @@
 package main.java.com.backend.buyerEnd.model;
 
-import java.util.*;
+import java.sql.Date;
 
 public class User {
 	private String userID;//用户编号
@@ -17,7 +17,7 @@ public class User {
 	private String District;//区县
 	private String Street;//街道
 	private String Address;//详细地址
-	private byte isManager;//是否是管理员
+	private int isManager;//是否是管理员
 	
 	public void setuserID(String userID)
 	{
@@ -75,7 +75,7 @@ public class User {
 	{
 		this.Address=Address;
 	}
-	public void setisManager(byte isManager)
+	public void setisManager(int isManager)
 	{
 		this.isManager=isManager;
 	}
@@ -136,8 +136,29 @@ public class User {
     {
     	return this.Address;
     }
-    public byte getisManager()
+    public int getisManager()
     {
     	return this.isManager;
+    }
+    public User(String userID,Date registerDate,String userName,String password,String realName,
+    		String IDnumber,String Phone,String userStatus,String Postcode,String Province,
+    		String City,String District,String Street,String Address,int isManager
+    		){
+    	super();
+    	this.userID=userID;
+    	this.registerDate=registerDate;
+    	this.userName=userName;
+    	this.password=password;
+    	this.realName=realName;
+    	this.IDnumber=IDnumber;
+    	this.Phone=Phone;
+    	this.userStatus=userStatus;
+    	this.Postcode=Postcode;
+    	this.Province=Province;
+    	this.City=City;
+    	this.District=District;
+    	this.Street=Street;
+    	this.Address=Address;
+    	this.isManager=isManager;
     }
 }
