@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>用户页面</title>
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,10 +16,10 @@
 
 <p>欢迎</p>
 <ul class="nav nav-pills">
-	<li class="active"><a href="buyMain.jsp?name=user">主页</a></li>
-	<li><a href="buyerUserInfor.jsp">我的信息</a></li>
+	<li><a href="buyMain.jsp?name=user">主页</a></li>
+	<li class="active"><a href="buyerUserInfor.jsp">我的信息</a></li>
 	<li><a href="#">我的购买</a></li>
-	<li><a href="#">我的快递</a></li>
+	<li><a href="buyUser.jsp">我的快递</a></li>
 	<li class="navbar-right"><a href="/supermarket/index.jsp">退出</a>
    	</li>
 </ul>
@@ -33,12 +33,6 @@
     		<label class="col-sm-5 control-label">用户ID</label>
     		<div class="col-sm-7">
       			<p class="form-control-static"><%=u1.getuserID() %></p>
-    		</div>
-  		</div>
-  		<div class="form-group">
-    		<label class="col-sm-5 control-label">创建时间</label>
-    		<div class="col-sm-7">
-      			<p class="form-control-static"><%=u1.getregisterDate() %></p>
     		</div>
   		</div>
  		<div class="form-group">
@@ -69,12 +63,6 @@
     		<label class="col-sm-5 control-label">联系电话</label>
     		<div class="col-sm-7">
       			<p class="form-control-static"><%=u1.getPhone() %></p>
-    		</div>
-  		</div>
-  		<div class="form-group">
-    		<label class="col-sm-5 control-label">用户状态</label>
-    		<div class="col-sm-7">
-      			<p class="form-control-static"><%=u1.getuserStatus() %></p>
     		</div>
   		</div>
   		<div class="form-group">
@@ -113,16 +101,10 @@
       			<p class="form-control-static"><%=u1.getAddress() %></p>
     		</div>
   		</div>
-  		<div class="form-group">
-    		<label class="col-sm-5 control-label">是否为管理员</label>
-    		<div class="col-sm-7">
-      			<p class="form-control-static"><%=u1.getisManager() %></p>
-    		</div>
-  		</div>	
- 			
+
  		<%}
  	%>
-  	
+
 </form>	 
 
 </body>

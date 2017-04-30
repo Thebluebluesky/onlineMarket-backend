@@ -140,6 +140,7 @@ public class User {
     {
     	return this.isManager;
     }
+    
     public User(String userID,Date registerDate,String userName,String password,String realName,
     		String IDnumber,String Phone,String userStatus,String Postcode,String Province,
     		String City,String District,String Street,String Address,int isManager

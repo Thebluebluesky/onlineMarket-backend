@@ -18,11 +18,20 @@
     <!--     第一部分 -->
     <div id="header">
         <div class="row clearfix">
-            <div class="col-md-12 column" style="background: #33eeff">
+            <div class="col-md-12 column" style="background: #ffffff">
                 <table>
                     <tr>
-                        <td>logo</td>
-                        <td>个人信息管理以及购买物品管理。个人信息包括查看、修改等；购买管理包括：购买的商品，以及物流等的查询</td>
+                        <td><img alt="" src="images/logo.jpg" /></div></td>
+                        <td>
+                        <ul class="nav nav-pills">
+						<li class="active"><a href="buyMain.jsp?name=user">主页</a></li>
+						<li><a href="buyerUserInfor.jsp">我的信息</a></li>
+						<li><a href="#">我的购买</a></li>
+						<li><a href="buyUser.jsp">我的快递</a></li>
+						<li class="navbar-right"><a href="/supermarket/index.jsp">退出</a>
+   						</li>
+						</ul>
+						</td>
                     </tr>
                     <tr>
                         <td>一排宣传的照片</td>
