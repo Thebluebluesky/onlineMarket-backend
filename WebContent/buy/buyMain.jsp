@@ -24,10 +24,10 @@
                         <td><img alt="" src="images/logo.jpg" /></div></td>
                         <td>
                         <ul class="nav nav-pills">
-						<li class="active"><a href="buyMain.jsp?name=user">主页</a></li>
-						<li><a href="buyerUserInfor.jsp">我的信息</a></li>
+						<li class="active"><a href="buyMain.jsp">主页<% request.getSession().setAttribute("sname",name); %></a></li>
+						<li><a href="buyerUserInfor.jsp">我的信息<% request.getSession().setAttribute("sname",name); %></a></li>
 						<li><a href="#">我的购买</a></li>
-						<li><a href="buyUser.jsp">我的快递</a></li>
+						<li><a href="buyUser.jsp">我的快递<% request.getSession().setAttribute("sname",name); %></a></li>
 						<li class="navbar-right"><a href="/supermarket/index.jsp">退出</a>
    						</li>
 						</ul>

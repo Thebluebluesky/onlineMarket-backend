@@ -14,13 +14,15 @@
 </head>
 
 <body>
-
+<% 
+	String name = request.getSession().getAttribute("sname").toString(); 
+%> 
 <p>欢迎</p>
 <ul class="nav nav-pills">
-	<li><a href="buyMain.jsp?name=user">主页</a></li>
-	<li><a href="buyerUserInfor.jsp">我的信息</a></li>
+	<li><a href="buyMain.jsp">主页<% request.getSession().setAttribute("sname",name); %></a></li>
+	<li><a href="buyerUserInfor.jsp">我的信息<% request.getSession().setAttribute("sname",name); %></a></li>
 	<li><a href="#">我的购买</a></li>
-	<li class="active"><a href="buyUser.jsp">我的快递</a></li>
+	<li class="active"><a href="buyUser.jsp">我的快递<% request.getSession().setAttribute("sname",name); %></a></li>
 	<li class="navbar-right"><a href="/supermarket/index.jsp">退出</a>
    	</li>
 </ul>
@@ -41,7 +43,7 @@
   	<tr>
   	<%
   		OrderDao dao = new OrderDao();
-		List<Order> list = dao.quick_getOrderByUserID("201702120024");
+		List<Order> list = dao.quick_getOrderByUserID(name);
 		for(Order o1:list)
 		{%>
 			<td><%=o1.getorderID() %></td>

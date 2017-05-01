@@ -13,20 +13,22 @@
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<% 
+	String name = request.getSession().getAttribute("sname").toString(); 
+%>  
 <p>欢迎</p>
 <ul class="nav nav-pills">
-	<li><a href="buyMain.jsp?name=user">主页</a></li>
-	<li class="active"><a href="buyerUserInfor.jsp">我的信息</a></li>
+	<li><a href="buyMain.jsp">主页<% request.getSession().setAttribute("sname",name); %></a></li>
+	<li class="active"><a href="buyerUserInfor.jsp">我的信息<% request.getSession().setAttribute("sname",name); %></a></li>
 	<li><a href="#">我的购买</a></li>
-	<li><a href="buyUser.jsp">我的快递</a></li>
+	<li><a href="buyUser.jsp">我的快递<% request.getSession().setAttribute("sname",name); %></a></li>
 	<li class="navbar-right"><a href="/supermarket/index.jsp">退出</a>
    	</li>
 </ul>
 <form class="form-horizontal" role="form">
 	<%
 		UserDao dao = new UserDao();
- 		List<User> list = dao.getUserByUserName("user");
+ 		List<User> list = dao.getUserByUserName(name);
  		for(User u1:list)
  		{%>
  		<div class="form-group">

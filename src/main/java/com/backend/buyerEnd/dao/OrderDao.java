@@ -1,6 +1,7 @@
 package main.java.com.backend.buyerEnd.dao;
 
 import main.java.com.backend.buyerEnd.model.Order;
+import main.java.com.backend.buyerEnd.dao.UserDao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,11 +11,12 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class OrderDao {
-	public List<Order> getOrderByUserID(String userid){
+	public List<Order> getOrderByUserID(String username){
 		List<Order> list = new ArrayList<Order>();
 		Connection con = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
+		String userid = null;
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		}catch(ClassNotFoundException e){
@@ -23,7 +25,13 @@ public class OrderDao {
 		
 		try{
 			con = DriverManager.getConnection("jdbc:sqlserver://123.206.116.122:1433;DatabaseName=onlineMarket","sa","ECUSTJ143@software");
-			String sql = "select * from [Order] where userID='"+userid+"'";
+			//先将username转换为userid
+			String sql = "select userID from [user] where userName='"+username+"'";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()){ userid = rs.getString("userID");}
+			
+			sql = "select * from [Order] where userID='"+userid+"'";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()){
@@ -62,11 +70,12 @@ public class OrderDao {
 		}
 		return list;
 	}
-	public List<Order> quick_getOrderByUserID(String userid){
+	public List<Order> quick_getOrderByUserID(String username){
 		List<Order> list = new ArrayList<Order>();
 		Connection con = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
+		String userid = null;
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		}catch(ClassNotFoundException e){
@@ -75,7 +84,15 @@ public class OrderDao {
 		
 		try{
 			con = DriverManager.getConnection("jdbc:sqlserver://123.206.116.122:1433;DatabaseName=onlineMarket","sa","ECUSTJ143@software");
-			String sql = "select * from [Order] where userID='"+userid+"'";
+			//先将username转换为userid
+			String sql = "select * from [user] where userName='"+username+"'";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()){ 
+				userid = rs.getString("userID");
+			}
+
+			sql = "select * from [Order] where userID='"+userid+"'";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()){
@@ -101,4 +118,52 @@ public class OrderDao {
 		}
 		return list;
 	}
+//	public void insertNewOrder(Order order){
+//		Connection con = null;
+//		PreparedStatement psmt = null;
+//		ResultSet rs = null;
+//		try{
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//		}catch(ClassNotFoundException e){
+//			e.printStackTrace();
+//		}
+//		
+//		try{
+//			con = DriverManager.getConnection("jdbc:sqlserver://123.206.116.122:1433;DatabaseName=onlineMarket","sa","ECUSTJ143@software");
+//			String sql = "insert into [Order](orderID,receiveName,Phone,orderStatus,payTime,deliveryTime,shipCost,"
+//					+ "allPrice,confirmTime,Postcode,Province,City,District,Street,Address,creatTime,userID,sellerID)"
+//					+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//			psmt = con.prepareStatement(sql);
+//			psmt.setString(1, order.getorderID());
+//			psmt.setString(2, order.getreceiverName());
+//			psmt.setString(3, order.getPhone());
+//			psmt.setString(4, order.getorderStatus());
+//			psmt.setString(5, order.getpayTime());
+//			psmt.setString(6, order.getdeliveryTime());
+//			psmt.setDouble(7, order.getshipCost());
+//			psmt.setDouble(8, order.getallPrice());
+//			psmt.setString(9, order.getconfirmTime());
+//			psmt.setString(10, order.getPostcode());
+//			psmt.setString(11, order.getProvince());
+//			psmt.setString(12, order.getCity());
+//			psmt.setString(13, order.getDistrict());
+//			psmt.setString(14, order.getStreet());
+//			psmt.setString(15, order.getAddress());
+//			psmt.setString(16, order.getcreatTime());
+//			psmt.setString(17, order.getuserID());
+//			psmt.setString(18, order.getsellerID());
+//			
+//			psmt.executeQuery();
+//		}catch(SQLException e){
+//			e.printStackTrace();
+//		}finally{
+//			try {
+//				if(rs!=null) rs.close();
+//				if(psmt!=null) psmt.close();
+//				if(con!=null) con.close();	
+//			}catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 }
