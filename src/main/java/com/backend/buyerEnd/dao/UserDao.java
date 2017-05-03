@@ -12,38 +12,6 @@ public class UserDao {
 //	public User getUserByUserID(String userId){
 //		
 //	}
-//	public String nameToID(String username){
-//		String userid = null;
-//		Connection con = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//		try{
-//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//		}catch(ClassNotFoundException e){
-//			e.printStackTrace();
-//		}
-//		
-//		try{
-//			con = DriverManager.getConnection("jdbc:sqlserver://123.206.116.122:1433;DatabaseName=onlineMarket","sa","ECUSTJ143@software");
-//			String sql = "select * from [user] where userName='"+username+"'";
-//			psmt = con.prepareStatement(sql);
-//			rs = psmt.executeQuery();
-//			while(rs.next()){
-//				userid = rs.getString("userID");
-//			}
-//		}catch(SQLException e){
-//			e.printStackTrace();
-//		}finally{
-//			try {
-//				if(rs!=null) rs.close();
-//				if(psmt!=null) psmt.close();
-//				if(con!=null) con.close();	
-//			}catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return userid;
-//	}
 	public List<User> getUserByUserName(String username){
 		List<User> list = new ArrayList<User>();
 		Connection con = null;

@@ -1,19 +1,21 @@
 package main.java.com.backend.buyerEnd.model;
 
 public class Goods {
-    private String goodsID;   //��Ʒ���
-    private String goodsName;  //��Ʒ����
-    private float goodsCount;  //�������
-    private float goodsPrice; //����
-    private String storeWay; //�����д���
-    private String sourceArea;//ԭ����
-    private String setDate;//�ϼ�ʱ��
-    private String sellerID; //�̼ұ��
-    private String goodsType;//��Ʒ���
-    private float leastAmount;//������
-    private float largeAmount;//�����ɹ�������
-    private float largePrice;//�����ɹ���
-    private String Picture; //��ƷͼƬ
+    private String goodsID;   //锟斤拷品锟斤拷锟�
+    private String goodsName;  //锟斤拷品锟斤拷锟斤拷
+    private String goodsIntro;
+    private int goodsCount;  //锟斤拷锟斤拷锟斤拷锟�
+    private int goodsSize; 
+    private float goodsPrice; //锟斤拷锟斤拷
+    private String storeWay; //锟斤拷锟斤拷锟叫达拷锟斤拷
+    private String sourceArea;//原锟斤拷锟斤拷
+    private String setDate;//锟较硷拷时锟斤拷
+    private String sellerID; //锟教家憋拷锟�
+    private String goodsType;//锟斤拷品锟斤拷锟�
+    private float leastAmount;//锟斤拷锟斤拷锟斤拷
+    private float largeAmount;//锟斤拷锟斤拷锟缴癸拷锟斤拷锟斤拷锟斤拷
+    private float largePrice;//锟斤拷锟斤拷锟缴癸拷锟斤拷
+    private String Picture; //锟斤拷品图片
     
     void setgoodsID(String  goodsID)
     {
@@ -23,9 +25,17 @@ public class Goods {
     {
     	this.goodsName=goodsName;
     }
-    void setgoodsCount(float  goodsCount)
+    void setgoodsIntro(String  goodsIntro)
+    {
+    	this.goodsIntro=goodsIntro;
+    }
+    void setgoodsCount(int  goodsCount)
     {
     	this.goodsCount=goodsCount;
+    }
+    void setgoodsSize(int  goodsSize)
+    {
+    	this.goodsSize=goodsSize;
     } 
     void setgoodsPrice(float  goodsPrice)
     {
@@ -71,6 +81,10 @@ public class Goods {
     {
     	return this.goodsName;
     }
+    String getgoodsIntro()
+    {
+    	return this.goodsIntro;
+    }
     String getsourceArea()
     {
     	return this.sourceArea;
@@ -91,9 +105,13 @@ public class Goods {
     {
     	return this.Picture;
     }
-    float getgoodsCount()
+    int getgoodsCount()
     {
     	return this.goodsCount;
+    }
+    int getgoodsSize()
+    {
+    	return this.goodsSize;
     }
     float getgoodsPrice()
     {
@@ -127,11 +145,23 @@ public class Goods {
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	public float getGoodsCount() {
+	public String getGoodsIntro() {
+		return goodsIntro;
+	}
+	public void setGoodsIntro(String goodsIntro) {
+		this.goodsIntro = goodsIntro;
+	}
+	public int getGoodsCount() {
 		return goodsCount;
 	}
-	public void setGoodsCount(float goodsCount) {
+	public void setGoodsCount(int goodsCount) {
 		this.goodsCount = goodsCount;
+	}
+	public int getGoodsSize() {
+		return goodsSize;
+	}
+	public void setGoodsSize(int goodsSize) {
+		this.goodsSize = goodsSize;
 	}
 	public float getGoodsPrice() {
 		return goodsPrice;
