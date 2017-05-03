@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Cart {
 
-	Map<Goods,Integer> cart=new HashMap<>();
+	public Map<Goods,Integer> cart=new HashMap<>();
 	
 	public void addGoods(Goods goods,int num){
 		if(cart.containsKey(goods))
@@ -34,5 +34,9 @@ public class Cart {
 			sum+=cart.get(goods)*goods.getgoodsPrice();
 		}
 		return sum;
+	}
+	
+	public double getCost(Goods goods){
+		return cart.get(goods)*goods.getgoodsPrice();
 	}
 }

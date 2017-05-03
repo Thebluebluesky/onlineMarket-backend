@@ -16,7 +16,6 @@
 <body>
 <% 
     String name = request.getSession().getAttribute("sname").toString(); 
-    Cart cart = (Cart)request.getSession().getAttribute("scart"); 
 %> 
 
 <%@ include file="header.jsp" %>
@@ -25,27 +24,25 @@
   <caption>购物车信息</caption>
   <thead>
     <tr>
-      <th>订单编号</th>
-      <th>订单状态</th>
-      <th>创建时间</th>
-      <th>付款时间</th>
-      <th>发货时间</th>
-      <th>确认/取消时间</th>
+      <th>商品名称</th>
+      <th>商品价格</th>
+      <th>订单数量</th>
+      <th>合计价格</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
     <%
-        OrderDao dao = new OrderDao();
-        List<Order> list = dao.quick_getOrderByUserID(name);
-        for(Order o1:list)
+        Cart cart = (Cart)request.getSession().getAttribute("scart"); 
+        if(cart==null)cart=new Cart();
+        for(Goods goods:cart.cart.keySet())
         {%>
-            <td><%=o1.getorderID() %></td>
-            <td><%=o1.getorderStatus() %></td>
-            <td><%=o1.getcreatTime() %></td>
-            <td><%=o1.getpayTime() %></td>
-            <td><%=o1.getdeliveryTime() %></td>
-            <td><%=o1.getconfirmTime() %></td>
+            <td><%=goods.getGoodsName() %></td>
+            <td><%=goods.getGoodsPrice() %></td>
+            <td><%=cart.cart.get(goods) %></td>
+            <td><%=cart.getCost(goods) %></td>
+            <td>删除</td>
         <%}
     %>
     </tr>

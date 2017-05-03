@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="java.util.*" import="main.java.com.backend.buyerEnd.model.*"
          import="javax.servlet.http.*" pageEncoding="utf-8" %>
+
+<script>
+    $(document).ready(function() {
+    // put all your jQuery goodness in here.
+}); 
+</script>
 <div id="header">
         <div class="row clearfix">
             <div class="col-md-12 column" style="background: #ffffff">

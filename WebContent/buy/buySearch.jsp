@@ -12,7 +12,6 @@ import="java.util.*" pageEncoding="utf-8" %>
 <body>
 <%
     String name = request.getSession().getAttribute("sname").toString();//name即为由login传值的登录名 
-    Cart cart = (Cart)request.getSession().getAttribute("scart"); 
 %>
 <div class="container">
 
