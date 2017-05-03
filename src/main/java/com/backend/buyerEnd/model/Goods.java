@@ -5,7 +5,7 @@ public class Goods {
     private String goodsName;  //锟斤拷品锟斤拷锟斤拷
     private String goodsIntro;
     private int goodsCount;  //锟斤拷锟斤拷锟斤拷锟�
-    private int goodsSize; 
+    private String goodsSize; 
     private float goodsPrice; //锟斤拷锟斤拷
     private String storeWay; //锟斤拷锟斤拷锟叫达拷锟斤拷
     private String sourceArea;//原锟斤拷锟斤拷
@@ -33,7 +33,7 @@ public class Goods {
     {
     	this.goodsCount=goodsCount;
     }
-    void setgoodsSize(int  goodsSize)
+    void setgoodsSize(String  goodsSize)
     {
     	this.goodsSize=goodsSize;
     } 
@@ -109,7 +109,7 @@ public class Goods {
     {
     	return this.goodsCount;
     }
-    int getgoodsSize()
+    String getgoodsSize()
     {
     	return this.goodsSize;
     }
@@ -157,10 +157,10 @@ public class Goods {
 	public void setGoodsCount(int goodsCount) {
 		this.goodsCount = goodsCount;
 	}
-	public int getGoodsSize() {
+	public String getGoodsSize() {
 		return goodsSize;
 	}
-	public void setGoodsSize(int goodsSize) {
+	public void setGoodsSize(String goodsSize) {
 		this.goodsSize = goodsSize;
 	}
 	public float getGoodsPrice() {

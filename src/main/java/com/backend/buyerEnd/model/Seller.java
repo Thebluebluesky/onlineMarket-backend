@@ -21,19 +21,19 @@ public class Seller {
    {
 	   this.sellerIntro=sellerIntro;
    }
-   String getSellerID()
+   public String getSellerID()
    {
 	   return this.sellerID;
    }
-   String getRegisterDate()
+   public String getRegisterDate()
    {
 	   return this.registerDate;
    }
-   String getUserID()
+   public String getUserID()
    {
 	   return this.userID;
    }
-   String getSellerIntro()
+   public String getSellerIntro()
    {
 	   return this.sellerIntro;
    }

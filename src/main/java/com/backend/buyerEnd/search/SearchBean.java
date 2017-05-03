@@ -24,8 +24,8 @@ public class SearchBean {
 		super();
 	}
 	
-	private ArrayList<Goods> allGoods=new ArrayList<>();
-	private ArrayList<String> allType=new ArrayList<>();
+	private ArrayList<Goods> allGoods=new ArrayList<Goods>();
+	private ArrayList<String> allType=new ArrayList<String>();
 	
 	public ArrayList<String> getAllType() { 
     	
@@ -41,8 +41,12 @@ public class SearchBean {
             SQLQuery query = session.createSQLQuery("select distinct goodsType as a from [onlineMarket].[dbo].[Goods]");
             
             query.addScalar("a", Hibernate.STRING);
-        	String type=(String)query.uniqueResult();
-        	allType.add(type);	
+            
+        	for(Object item:query.list()){
+            	String type=(String)item;
+            	allType.add(type);	
+            }
+        	
             //提交事务  
             session.getTransaction().commit();  
             

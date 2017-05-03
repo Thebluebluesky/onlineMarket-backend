@@ -14,7 +14,7 @@
         <property name="goodsIntro" type="java.lang.String">
             <column name="GOODSINTRO" />
         </property>        
-        <property name="goodsSize" type="int">
+        <property name="goodsSize" type="java.lang.String">
             <column name="GOODSSIZE" />
         </property>
         <property name="goodsCount" type="int">

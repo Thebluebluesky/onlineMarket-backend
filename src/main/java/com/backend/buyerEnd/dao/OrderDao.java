@@ -130,7 +130,9 @@ public class OrderDao {
 //		
 //		try{
 //			con = DriverManager.getConnection("jdbc:sqlserver://123.206.116.122:1433;DatabaseName=onlineMarket","sa","ECUSTJ143@software");
-//			String sql = "insert into [Order] values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//			String sql = "insert into [Order](orderID,receiveName,Phone,orderStatus,payTime,deliveryTime,shipCost,"
+//					+ "allPrice,confirmTime,Postcode,Province,City,District,Street,Address,creatTime,userID,sellerID)"
+//					+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //			psmt = con.prepareStatement(sql);
 //			psmt.setString(1, order.getorderID());
 //			psmt.setString(2, order.getreceiverName());

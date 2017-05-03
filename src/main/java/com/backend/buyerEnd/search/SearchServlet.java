@@ -109,7 +109,7 @@ public class SearchServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		String searchinfo=request.getParameter("searchinfo");
 				
-		ArrayList<Goods> allGoods=new ArrayList<Goods>();
+		ArrayList<Goods> allGoods=new ArrayList<>();
 		allGoods=loadAllGoods(searchinfo);
 		
 		session.setAttribute("allGoods", allGoods);

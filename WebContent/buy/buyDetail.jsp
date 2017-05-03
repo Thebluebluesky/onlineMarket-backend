@@ -18,85 +18,43 @@ import="main.java.com.backend.buyerEnd.service.*"
 </head>
 <body>
 <%
+    Cart cart = (Cart)request.getSession().getAttribute("scart"); 
     String flag=(String)request.getParameter("flag");
     HttpSession sess=request.getSession();
     String goodsId=(String)sess.getAttribute("goodsId"+flag);
     String goodsType=(String)sess.getAttribute("goodsType"+flag);
     String sellerId=(String)sess.getAttribute("sellerId"+flag);
     String userName=(String)sess.getAttribute("userName");
+    String name=userName.trim();
     DetailService svc=new DetailService();
     Goods goods=svc.getGoodsByGoodsId(goodsId);
-    String goodsName=goods.getGoodsName();
+    String goodsName=goods.getGoodsName().trim();
     String goodsIntro=goods.getGoodsIntro();
+    if(goodsIntro==null)goodsIntro="暂无商品简介";
     String storeWay=goods.getStoreWay();
+    if(storeWay==null)storeWay="暂无说明";
     String sourceArea=goods.getSourceArea();
-    int goodsSize=goods.getgoodsSize();
+    if(sourceArea==null)sourceArea="暂无说明";
+    String goodsSize=goods.getGoodsSize();
+    if(goodsSize==null)goodsSize="规格请咨询店家";
+    int goodsCount=goods.getGoodsCount();
+    float goodsPrice=goods.getGoodsPrice();
+
+    Seller seller=svc.getSellerBySellerId(sellerId);
+    String sellerIntro=seller.getSellerIntro();
+    if(sellerIntro==null)sellerIntro="暂无商家简介";
     //String name = request.getSession().getAttribute("sname").toString();//name即为由login传值的登录名
     //String presearchinfo = request.getSession().getAttribute("searchinfo").toString();  //搜索的信息  
 %>
 <div class="container">
 
 
-    <!--     第一部分 -->
-    <div id="header">
-        <div class="row clearfix">
-            <div class="col-md-12 column" style="background: #33eeff">
-                <table>
-                    <tr>
-                        <td>logo</td>
-                        <td>个人信息管理以及购买物品管理。个人信息包括查看、修改等；购买管理包括：购买的商品，以及物流等的查询</td>
-                    </tr>
-                    <tr>
-                        <td>一排宣传的照片</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!--     第二部分 导航栏 -->
-    <div id="topmenu">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle"
-                                    data-toggle="collapse" data-target="#example-navbar-collapse">
-                                <span class="sr-only">切换导航</span> <span class="icon-bar"></span>
-                                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="buyMain.jsp">首页</a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <jsp:useBean id="goodsTypes" class="main.java.com.backend.buyerEnd.search.SearchBean" />
-                                    <%  ArrayList<String> allType=new ArrayList<>(); 
-                                        allType=goodsTypes.getAllType();
-                                        int cntType=allType.size();
-                                        for (int i=0;i<cntType;i++) {
-                                            String typeName=allType.get(i);
-                                    %>
-                                        <li><a href="#"><%=typeName%></a></li>
-                                    <%} %>
-                            </ul>
-                            <form class="navbar-form navbar-right" role="search" action="${pageContext.request.contextPath}/search.do" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="请输入你想要搜索的商品类别或商品名称" name="searchinfo">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
-                        </div>                        
-                    </div>
-                </nav>
-            </div>            
-        </div>        
-    </div>
+    <%@ include file="header.jsp" %>
 
     <!--     第三部分 -->
     <div class="detail-view">
         <ol class="breadcrumb">
-            <li><a href="#">主页</a></li>
+            <li><a href="buyMain.jsp">主页<% request.getSession().setAttribute("sname",name); %></a></li>
             <li><a href="#"><%=goodsType%></a></li>
             <li class="active"><%=goodsName%></li> 
         </ol>
@@ -105,14 +63,14 @@ import="main.java.com.backend.buyerEnd.service.*"
             <div class="row clearfix">
                 <div class="col-md-6 column">
                     <div class="main-img">
-                        <%String str="../resources/images/"+goodsName+".jpg";
+                        <%String picPath="../resources/images/"+goodsName+".jpg";
                         %>
-                        <img src=<%=str %> width="100%">
+                        <img src=<%=picPath %> width="100%">
                     </div>
                 </div>
                 <div class="col-md-6 column">
                     <div class="goods-info">
-                        <h1><%=goodsName%></h1>
+                        <h1><%=goodsName%>(<%=goodsSize%>)</h1>
                         <div class="desc" style="padding-bottom:30px"><%=goodsIntro%></div>
                         <div class="desc">
                             <div class="container" style="background:#EEE;width:100%">
@@ -143,7 +101,8 @@ import="main.java.com.backend.buyerEnd.service.*"
                                                 }
                                                 function plus() {
                                                     var out=document.getElementById('out');
-                                                    if(out.innerHTML<100000)out.innerHTML++;
+                                                    var maxValue=<%=goodsCount%>  
+                                                    if(out.innerHTML<maxValue-1)out.innerHTML++;
                                                 }
                                             </script>
                                             <input type="button" id="btn1" value="-" onclick="minus()" style="out-line:none;" />
@@ -166,7 +125,7 @@ import="main.java.com.backend.buyerEnd.service.*"
                                     <label>产地</label> <%=sourceArea%>
                                 </li>
                                 <li>
-                                    <label>保质期</label> 
+                                    <label>库存量</label> <%=goodsCount%> 
                                 </li>
                                 <li>
                                     <label>规格</label> <%=goodsSize%>
@@ -187,8 +146,11 @@ import="main.java.com.backend.buyerEnd.service.*"
         <div class="bt-content">
                 <ul class="nav nav-tabs">
                 <li class="active"><a style="font-size: 25px">商家简介</a></li></br>
-                </br></br></br>
-</ul>
+                </ul>
+                <div class="desc">
+                    <%=sellerIntro%>
+                </div>
+                </br></br></br></br></br></br></br>
         </div>
     </div>
 
@@ -201,6 +163,8 @@ import="main.java.com.backend.buyerEnd.service.*"
             </div>
         </div>
     </div>
+
+    
 </div>
 </body>
 </html>
