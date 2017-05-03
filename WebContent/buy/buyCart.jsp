@@ -34,16 +34,16 @@
   <tbody>
     <tr>
     <%
-        Cart cart = (Cart)request.getSession().getAttribute("scart"); 
-        if(cart==null)cart=new Cart();
-        for(Goods goods:cart.cart.keySet())
-        {%>
-            <td><%=goods.getGoodsName() %></td>
-            <td><%=goods.getGoodsPrice() %></td>
-            <td><%=cart.cart.get(goods) %></td>
-            <td><%=cart.getCost(goods) %></td>
-            <td>删除</td>
-        <%}
+        // Cart cart = (Cart)request.getSession().getAttribute("scart"); 
+        // if(cart==null)cart=new Cart();
+        // for(Goods goods:cart.cart.keySet())
+        // {%>
+        //     <td><%=goods.getGoodsName() %></td>
+        //     <td><%=goods.getGoodsPrice() %></td>
+        //     <td><%=cart.cart.get(goods) %></td>
+        //     <td><%=cart.getCost(goods) %></td>
+        //     <td>删除</td>
+        // <%}
     %>
     </tr>
   </tbody>

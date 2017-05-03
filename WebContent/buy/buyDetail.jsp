@@ -104,6 +104,9 @@ import="main.java.com.backend.buyerEnd.service.*"
                                                     var maxValue=<%=goodsCount%>  
                                                     if(out.innerHTML<maxValue-1)out.innerHTML++;
                                                 }
+                                                function addToCart(){
+                                                    var out=document.getElementById('out');
+                                                }
                                             </script>
                                             <input type="button" id="btn1" value="-" onclick="minus()" style="out-line:none;" />
                                                 <!-- <img src="/Content/img/minus.png"> -->
@@ -118,7 +121,7 @@ import="main.java.com.backend.buyerEnd.service.*"
                             </div>
                         </div>
 
-                        <div class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</div>
+                        <div class="addToCart" style="width:40%" onclick="addToCart()">&nbsp;&nbsp;&nbsp;加入购物车</div>
                         <div class="desc">
                         </br>
                                 <li>

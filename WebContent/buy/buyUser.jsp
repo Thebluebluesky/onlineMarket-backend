@@ -14,8 +14,7 @@
 </head>
 <body>
     <% 
-    	String name = request.getSession().getAttribute("sname").toString(); 
-      Cart cart = (Cart)request.getSession().getAttribute("scart"); 
+    	String name = request.getSession().getAttribute("sname").toString();
     %> 
 
     <%@ include file="header.jsp" %>
