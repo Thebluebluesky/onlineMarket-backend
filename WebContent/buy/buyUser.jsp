@@ -50,6 +50,7 @@
       </tbody>
     </table>
 
+    <%@ include file="footer.jsp" %>
 
 </body>
 </html>

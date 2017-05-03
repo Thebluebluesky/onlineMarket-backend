@@ -106,6 +106,9 @@ import="main.java.com.backend.buyerEnd.service.*"
                                                 }
                                                 function addToCart(){
                                                     var out=document.getElementById('out');
+                                                    if(out.innerHTML>0){
+                                                        var 
+                                                    }
                                                 }
                                             </script>
                                             <input type="button" id="btn1" value="-" onclick="minus()" style="out-line:none;" />
@@ -169,5 +172,7 @@ import="main.java.com.backend.buyerEnd.service.*"
 
     
 </div>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>

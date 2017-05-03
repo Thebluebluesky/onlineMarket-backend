@@ -84,5 +84,6 @@ import="java.util.*" pageEncoding="utf-8" %>
         </div>
     </div>
 </div>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
